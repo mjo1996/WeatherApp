@@ -613,10 +613,9 @@ def run():
             "[1] Today's Weather\n"
             "[2] 7-Day Forecast\n"
             "[3] 4-Week Forecast\n"
-            "[4] Hourly Forecast\n"
-            "[5] Historical Weather\n"
-            "[6] Search New Location\n"
-            "[7] Exit",
+            "[4] Historical Weather\n"
+            "[5] Search New Location\n"
+            "[6] Exit",
             title="Menu",
             box=box.ROUNDED,
         )
@@ -660,16 +659,6 @@ def run():
                 console.print("[red]Failed to fetch 4-week forecast data.[/red]")
 
         elif choice == "4":
-            console.print("[dim]Fetching hourly forecast...[/dim]")
-            data = fetch_forecast(lat, lon, days=1)
-            if data:
-                for day_idx in range(min(3, len(data["daily"]["time"]))):
-                    display_hourly(data, day_idx)
-                    console.print()
-            else:
-                console.print("[red]Failed to fetch forecast data.[/red]")
-
-        elif choice == "5":
             console.print()
             console.print("[bold]Historical Weather Lookup[/bold]")
             console.print("Enter date range (or press Enter for last 30 days):")
@@ -696,7 +685,7 @@ def run():
             else:
                 console.print("[red]Failed to fetch historical data.[/red]")
 
-        elif choice == "6":
+        elif choice == "5":
             console.print()
             query = Prompt.ask("[bold]Search for a location[/bold]")
             if query:
@@ -707,7 +696,7 @@ def run():
                     lon = location["longitude"]
             continue
 
-        elif choice == "7":
+        elif choice == "6":
             console.print("[yellow]Goodbye![/yellow]")
             break
 
