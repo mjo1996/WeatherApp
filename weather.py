@@ -638,7 +638,6 @@ def run():
             data = fetch_forecast(lat, lon, days=7)
             if data:
                 daily = data["daily"]
-                display_hourly(data, 0)
                 console.print()
                 display_weather_table(daily, f"7-Day Forecast - {loc_name}")
             else:
@@ -704,7 +703,7 @@ def run():
             console.print("[red]Invalid option.[/red]")
 
         console.print()
-        continue_choice = Prompt.ask("Press Enter to continue or [q] to quit", default="")
+        continue_choice = Prompt.ask("Press Enter to continue or q to quit", default="")
         if continue_choice.lower() == "q":
             console.print("[yellow]Goodbye![/yellow]")
             break
